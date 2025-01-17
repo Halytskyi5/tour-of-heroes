@@ -18,7 +18,8 @@ import {ActivatedRoute} from '@angular/router';
   styleUrl: './hero-detail.component.scss'
 })
 export class HeroDetailComponent {
-  @Input() hero?: Hero;
+  //@Input() hero?: Hero;
+  hero?: Hero;
   constructor(
     private route: ActivatedRoute,
     private heroService: HeroService,
