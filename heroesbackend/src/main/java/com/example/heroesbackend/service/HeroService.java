@@ -28,4 +28,13 @@ public class HeroService {
         oldHero.setName(hero.getName());
         return this.heroRepository.save(oldHero);
     }
+    public HeroEntity updateHeroTest(HeroEntity hero) {
+        HeroEntity oldHero = this.heroRepository.findById(hero.getId()).get();
+        oldHero.setName(hero.getName());
+        return this.heroRepository.save(oldHero);
+    }
+
+    public void deleteHero(Long id) {
+        this.heroRepository.deleteById(id);
+    }
 }

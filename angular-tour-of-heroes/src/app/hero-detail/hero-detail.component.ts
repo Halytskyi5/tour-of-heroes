@@ -43,4 +43,10 @@ export class HeroDetailComponent {
         .subscribe(() => this.goBack());
     }
   }
+  saveTest(): void {
+    if (this.hero) {
+      this.heroService.updateHeroTest(this.hero)
+        .subscribe(() => this.goBack());
+    }
+  }
 }

@@ -42,12 +42,31 @@ public class HeroController {
         }
     }
 
+    @PutMapping
+    public ResponseEntity updateHeroTest(@RequestBody HeroEntity hero) {
+        try {
+            return ResponseEntity.ok(this.heroService.updateHeroTest(hero));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Error in updateHeroTest()");
+        }
+    }
+
     @PutMapping("{id}")
     public ResponseEntity updateHero(@PathVariable("id") Long id, @RequestBody HeroEntity hero) {
         try {
             return ResponseEntity.ok(this.heroService.updateHero(hero, id));
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("Error in updateHero()");
+        }
+    }
+
+    @DeleteMapping("{id}")
+    public ResponseEntity deleteHero(@PathVariable Long id) {
+        try {
+            this.heroService.deleteHero(id);
+            return ResponseEntity.ok("Hero was deleted");
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Error deleteHero()!");
         }
     }
 }
