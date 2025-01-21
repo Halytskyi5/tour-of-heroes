@@ -22,6 +22,7 @@ public class HeroController {
         }
     }
 
+    //@CrossOrigin(origins = "http://localhost:4200")
     @GetMapping
     public ResponseEntity getAllHeroes() {
         try {
@@ -31,12 +32,22 @@ public class HeroController {
         }
     }
 
+   // @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("{id}")
     public ResponseEntity getHero(@PathVariable("id") Long id) {
         try {
             return ResponseEntity.ok(this.heroService.getHero(id));
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("Error in getHero()");
+        }
+    }
+
+    @PutMapping("{id}")
+    public ResponseEntity updateHero(@PathVariable("id") Long id, @RequestBody HeroEntity hero) {
+        try {
+            return ResponseEntity.ok(this.heroService.updateHero(hero, id));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Error in updateHero()");
         }
     }
 }

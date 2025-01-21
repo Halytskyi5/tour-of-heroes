@@ -23,4 +23,9 @@ public class HeroService {
     public HeroEntity getHero(Long id) {
         return this.heroRepository.findById(id).get();
     }
+    public HeroEntity updateHero(HeroEntity hero, Long id) {
+        HeroEntity oldHero = this.heroRepository.findById(id).get();
+        oldHero.setName(hero.getName());
+        return this.heroRepository.save(oldHero);
+    }
 }
