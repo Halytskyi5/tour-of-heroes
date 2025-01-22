@@ -18,7 +18,8 @@ import {ActivatedRoute} from '@angular/router';
   styleUrl: './hero-detail.component.scss'
 })
 export class HeroDetailComponent {
-  @Input() hero?: Hero;
+  //@Input() hero?: Hero;
+  hero?: Hero;
   constructor(
     private route: ActivatedRoute,
     private heroService: HeroService,
@@ -35,5 +36,17 @@ export class HeroDetailComponent {
   }
   goBack(): void {
     this.location.back();
+  }
+  save(): void {
+    if (this.hero) {
+      this.heroService.updateHero(this.hero)
+        .subscribe(() => this.goBack());
+    }
+  }
+  saveTest(): void {
+    if (this.hero) {
+      this.heroService.updateHeroTest(this.hero)
+        .subscribe(() => this.goBack());
+    }
   }
 }
