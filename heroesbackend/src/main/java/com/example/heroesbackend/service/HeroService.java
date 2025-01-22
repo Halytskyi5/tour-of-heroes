@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -22,6 +23,17 @@ public class HeroService {
 
     public HeroEntity getHero(Long id) {
         return this.heroRepository.findById(id).get();
+    }
+    public List<HeroEntity> getHero(String name) {
+        List<HeroEntity> selectedHeroes = new ArrayList<>();
+        List<HeroEntity> heroes = this.heroRepository.findAll();
+        name = name.toLowerCase();
+        for (HeroEntity hero : heroes) {
+            if(hero.getName().toLowerCase().contains(name)) {
+                selectedHeroes.add(hero);
+            }
+        }
+        return selectedHeroes;
     }
     public HeroEntity updateHero(HeroEntity hero, Long id) {
         HeroEntity oldHero = this.heroRepository.findById(id).get();

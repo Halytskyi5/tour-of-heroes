@@ -66,8 +66,17 @@ input {
   padding: .5rem 1.5rem;
   font-size: 1rem;
   margin-bottom: 2rem;
+  margin-left: 20px;
 }
-
+.inp{
+  display: inline-block;
+  width: 50%;
+  height: 40px;
+}
+.input-container {
+  text-align: center;
+  display: flex;
+}
 .add-button:hover {
   color: white;
   background-color: #42545C;

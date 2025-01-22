@@ -41,6 +41,14 @@ public class HeroController {
             return ResponseEntity.badRequest().body("Error in getHero()");
         }
     }
+    @GetMapping("/")
+    public ResponseEntity getHero(@RequestParam("name") String name) {
+        try {
+            return ResponseEntity.ok(this.heroService.getHero(name));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Error in getHero()");
+        }
+    }
 
     @PutMapping
     public ResponseEntity updateHeroTest(@RequestBody HeroEntity hero) {
@@ -50,7 +58,7 @@ public class HeroController {
             return ResponseEntity.badRequest().body("Error in updateHeroTest()");
         }
     }
-
+git 
     @PutMapping("{id}")
     public ResponseEntity updateHero(@PathVariable("id") Long id, @RequestBody HeroEntity hero) {
         try {
