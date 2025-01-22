@@ -34,7 +34,8 @@ public class HeroService {
         return this.heroRepository.save(oldHero);
     }
 
-    public void deleteHero(Long id) {
+    public Long deleteHero(Long id) {
         this.heroRepository.deleteById(id);
+        return id;
     }
 }

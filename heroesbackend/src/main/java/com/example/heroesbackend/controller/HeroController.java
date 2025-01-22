@@ -63,8 +63,7 @@ public class HeroController {
     @DeleteMapping("{id}")
     public ResponseEntity deleteHero(@PathVariable Long id) {
         try {
-            this.heroService.deleteHero(id);
-            return ResponseEntity.ok("Hero was deleted");
+            return ResponseEntity.ok(this.heroService.deleteHero(id));
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("Error deleteHero()!");
         }

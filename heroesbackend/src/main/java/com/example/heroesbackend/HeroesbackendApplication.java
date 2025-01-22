@@ -18,9 +18,13 @@ public class HeroesbackendApplication {
 		return new WebMvcConfigurer() {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/heroes")
-						.allowedOrigins("http://localhost:4200");
-				registry.addMapping("/heroes/{id}").allowedOrigins("http://localhost:4200");
+				registry.addMapping("/**")
+						.allowedOrigins("http://localhost:4200")
+						.allowedMethods("*")
+						.maxAge(3600L)
+						.allowedHeaders("*")
+						.exposedHeaders("Authorization")
+						.allowCredentials(false);  // may be true
 			}
 		};
 	}
